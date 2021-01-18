@@ -240,8 +240,7 @@ x,y = y,x
      * `dict[Key]`로 접근이 가능하고 Value를 반환한다.
      * Key로 접근하기 때문에 순서와 상관이 없으며, 중복이 불가능하다.
      * Key로 접근하여 Value를 변경할 수 있다.
-
-
+     * `dict.items()`를 사용하면 (Key, Value)로 묶인 튜플들로 구성된 `dict_items`(list와 비슷?) 반환
 
 # 제어문
 
