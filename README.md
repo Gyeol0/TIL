@@ -3,10 +3,16 @@
 * 2021.01.14 ~ing
 * 오늘 배운 내용들을 차곡차곡 정리하는 공간입니다.
 
+# Git
+
 ## git command
 
 * 설정
 * 조작
+
+
+
+# Python
 
 ## crawling & chat_bot
 
