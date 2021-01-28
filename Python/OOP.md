@@ -169,7 +169,35 @@ print(kim.name)
 
 
 
+## 인스턴스 & 클래스 변수
 
+### 인스턴스 변수
+
+- 인스턴스의 속성(attribute)
+- 각 인스턴스들의 고유한 변수
+- 메서드 정의에서 `self.변수명`로 정의
+- 인스턴스가 생성된 이후 `인스턴스.변수명`로 접근 및 할당
+
+```python
+class Person():
+    def __init__(self, name):
+    	self.name = name
+      
+kim = Person('han')
+print(kim.name)
+```
+
+* `han` 출력
+
+
+
+### 클래스 변수
+
+- 클래스의 속성(attribute)
+- 모든 인스턴스가 공유
+- 클래스 선언 내부에서 정의
+- `클래스.변수명`으로 접근 및 할당
+- 
 
 
 
