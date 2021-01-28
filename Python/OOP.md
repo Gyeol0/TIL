@@ -197,33 +197,180 @@ print(kim.name)
 - 모든 인스턴스가 공유
 - 클래스 선언 내부에서 정의
 - `클래스.변수명`으로 접근 및 할당
-- 
+
+```python
+class Person():
+    po = 0
+    def __init__(self, name):
+    	self.name = name
+      
+print(Person.po)
+```
+
+* `0` 반환
+
+```python
+class Person():
+    po = 0
+    def __init__(self, name):
+    	self.name = name
+      	
+kim = Person('han')
+print(kim.po)
+kim.po = 10
+print(kim.po)
+print(Person.po)
+```
+
+* '0'
+* `10`
+* `0`
+
+* 인스턴스 변수가 없으면, 클래스 변수를 사용
 
 
 
+## 인스턴스 & 클래스간의 이름공간
+
+### 이름 공간 탐색 순서
+
+- 클래스를 정의하면, 클래스가 생성됨과 동시에 이름 공간(namespace)이 생성
+
+- 인스턴스를 만들게 되면, 인스턴스 객체가 생성되고 해당되는 이름 공간이 생성
+
+- 인스턴스의 속성이 변경되면, 변경된 데이터를 인스턴스 객체 이름 공간에 저장
+
+- 인스턴스에서 특정한 속성에 접근하게 되면 **인스턴스 => 클래스** 순으로 탐색
+- 클래스와 인스턴스는 서로 다른 이름 공간을 가지고 있음
 
 
 
+## 메서드의 종류
+
+### 인스턴스 메서드(instance method)
+
+- 인스턴스가 사용할 메서드
+- 클래스 내부에 정의되는 메서드의 기본값은 인스턴스 메서드
+- 주로 인스턴스 변수를 사용할 때 사용
+- **호출시, 첫번째 인자로 인스턴스 자기자신 `self`이 전달됨**
+
+```python
+class NewClass():
+    def instance_method(self):
+        return self
+```
+
+* 인스턴스랑 인스턴스 메서드의 self 값은 같음
 
 
 
+### 클래스 메서드(class method)
+
+- 클래스가 사용할 메서드
+- `@classmethod` 데코레이터를 사용하여 정의
+- 주로 클래스 변수를 사용할 때 사용
+- **호출시, 첫 번째 인자로 클래스 `cls`가 전달됨**
+
+```python
+class NewClass():
+    @classmethod
+    def class_method(cls):
+        return cls
+```
 
 
 
+### 스태틱 메서드(static method)
+
+- 클래스가 사용할 메서드
+- `@staticmethod` 데코레이터를 사용하여 정의
+- 주로 데이터를 사용하지 않을 때 사용
+- **호출시, 어떠한 인자도 전달되지 않음**
+
+```python
+class NewClass():
+    @staticmethod
+    def static_method(arg):
+        return arg
+```
+
+* 인스턴스는 스태틱 메서드에 접근 가능
 
 
 
+### 인스턴스와 메서드
+
+- 인스턴스는 3가지 메서드 모두에 접근 가능
+- 인스턴스에서 클래스 메서드와 스태틱 메서드는 되도록 호출하지 않는다.
+- 인스턴스가 할 행동은 모두 인스턴스 메서드로 한정 지어서 설계한다.
 
 
 
+### 클래스와 메서드
 
+- 클래스 3가지 메서드 모두에 접근 가능
+- 클래스에서 인스턴스 메서드는 되도록 호출하지 않는다.
+- 클래스가 할 행동은 다음 원칙에 따라 설계한다. (클래스 메서드와 정적 메서드)
+  - 클래스 자체(`cls`)와 그 속성에 접근할 필요가 있다면 **클래스 메서드**로 정의한다.
+  - 클래스와 클래스 속성에 접근할 필요가 없다면정적 메서드로 정의한다.
+    - 정적 메서드는 `cls`, `self`와 같이 묵시적인 첫번째 인자를 받지 않기 때문
 
+```python
+class Dog:
+    po = 0
+    
+    def __init__(self, name, breed='강아지'):
+        self.name = name
+        self.breed = breed
+        Dog.po += 1
+    
+    def bark(self): # 인스턴스 변수를 활용하는 인스턴스 메소드
+        print(f'멍멍 {self.name}!!! 나는 {self.breed}')
+        
+    @staticmethod
+    def info():
+		# 데이터를 사용하지 않을 때
+        print('강아지입니다.')
+        
+    @classmethod
+    def get_po(cls): 
+        # 클래스 변수를 사용하는 클래스 메서드
+        # self 대신 cls
+        print(f'{cls.po}')
+    
+        
+    def __del__(self):
+        Dog.population -= 1
+```
 
+```python
+p = Dog('댕댕이')
+Dog.get_po()
+```
 
+* 1
 
+```python
+Dog.bark(p)
+Dog.info()
+```
 
+* 멍멍 댕댕이!!! 나는 강아지
+* 강아지입니다.
 
+```python
+p.bark()
+p.get_po()
+```
 
+* 멍멍 댕댕이!!! 나는 강아지
+* 1
+
+```python
+p.info()
+```
+
+* 강아지입니다.
 
 
 
