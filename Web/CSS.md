@@ -175,6 +175,7 @@ h1 {
 ## DIsplay
 
 * 모든 요소는 박스모델이고, 어떻게 보여지는지(display)에 따라 문서에서의 배치가 달라질 수 있다.
+* HTML 요소들을 시각적으로 어떻게 보여줄지 결정하는 속성
 
 * `display`: `block`
   * 줄 바꿈이 일어나는 요소
@@ -190,4 +191,27 @@ h1 {
   * div / ul, ol, li / p / hr / form  등
 * 인라인 레벨 요소
   * span  / a / img / input, label / b, em, i, strong 등
+* `display`: `inline-block`
+  * block과 inline 레벨 요소의 특징을 모두 갖는다.
+  * inline처럼 한 줄에 표시 가능
+  * block처럼 width, height, margin 속성을 모두 지정할 수 있다.
+* `display`: `none`
+  * 해당 요소를 화면에 표시하지 않는다. (공간조차 사라진다)
+  * visibility: hidden은 해당 요소가 공간은 차지하나 화면에 표시만 하지 않는다.
 
+
+
+## Position
+
+* 문서 상에서 요소를 배치하는 방법을 지정
+* `static`: default
+  * 기본적인 요소의 배치 순서에 따름(좌측 상단)
+  * 부모 요소 내에서 배치될 때는 부모 요소의 위치를 기준으로 배치 된다.
+* `relative`: static 위치를 기준으로 이동(상대 위치)
+  * top, bottom, left, right를 사용하여 이동 가능
+  * 기본 위치를 기준으로
+* `absolute`: static이 아닌 가장 가까이 있는 부모/조상 요소를 기준으로 이동(절대 위치)
+  * top, bottom, left, right를 사용하여 이동 가능
+* `fixed` 부모 요소와 관계 없이 브라우저를 기준으로 이동(고정 위치)
+  * 스크롤시에도 항상 같은 곳에 위치
+  * top, bottom, left, right를 사용하여 이동 가능
