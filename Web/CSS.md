@@ -147,48 +147,47 @@ h1 {
 
   * 테두리 바깥의 외부 여백
   * 배경색을 지정할 수 없음
-
 * Border
 
   * 테두리 영역
-
 * Content
 
   * 글이나 이미지 등 요소의 실제 내용
-
 * Padding
 
   * 테두리 안쪽의 내부 여백
   * 요소에 적용된 배경색
   * 이미지는 padding까지 적용
 
-  
 
-박스모델
+### box-sizing
 
-컨텐츠
+* 모든 요소의 `box-sizing`은 `content-box`
+  * padding을 제외한 순수 contents 영역만을 box로 지정
+* border까지의 너비까지 합하여 보기를 원하면 `box-sizing`을 `boder-box`로 설정
 
-마지
+### 마진 상쇄(Margin collapsing)
 
-ㄴ패딩
-
-보더
-
+* 인접 형제 요소 간의 margin이 겹쳐서 보임
 
 
 
+## DIsplay
 
-디스플레이
+* 모든 요소는 박스모델이고, 어떻게 보여지는지(display)에 따라 문서에서의 배치가 달라질 수 있다.
 
-블락 전체 컨테이너처ㅇ럼 차지
+* `display`: `block`
+  * 줄 바꿈이 일어나는 요소
+  * 화면 크기 전체의 가로 폭을 차지한다.
+  * 블록 레벨 요소 한에 인라인 레벨 요소가 들어갈 수 있음.
+* `display`: `inline`
+  * 줄 바꿈이 일어나지 않는 행의 일부 요소
+  * content 너비만큼 가로 폭을 차지한다.
+  * width, heigth, margin-top, margin-bottom을 지정할 수 없다.
+  * 상하 여백은 `line-height`로 지정한다.
 
-인라인
-
-한줄의 자기 컨텐츠 영역만 차지
-
-
-
-속성에 따라  정렬
-
-마진, 그리드 
+* 블록 레벨 요소
+  * div / ul, ol, li / p / hr / form  등
+* 인라인 레벨 요소
+  * span  / a / img / input, label / b, em, i, strong 등
 
