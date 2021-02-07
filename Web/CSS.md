@@ -172,7 +172,27 @@ h1 {
 
 
 
-## DIsplay
+## Layout
+
+* 웹 페이지에 포함되는 요소들을 취합하고, 그것들이 어느 위치에 놓일 것인지를 제어하는 기술
+
+* Display
+
+* Position
+
+* Float
+
+* Flexbox
+
+* Grid
+
+* Table layout
+
+* Multiple-column layout
+
+  
+
+### DIsplay
 
 * 모든 요소는 박스모델이고, 어떻게 보여지는지(display)에 따라 문서에서의 배치가 달라질 수 있다.
 * HTML 요소들을 시각적으로 어떻게 보여줄지 결정하는 속성
@@ -201,7 +221,7 @@ h1 {
 
 
 
-## Position
+### Position
 
 * 문서 상에서 요소를 배치하는 방법을 지정
 * `static`: default
@@ -215,3 +235,47 @@ h1 {
 * `fixed` 부모 요소와 관계 없이 브라우저를 기준으로 이동(고정 위치)
   * 스크롤시에도 항상 같은 곳에 위치
   * top, bottom, left, right를 사용하여 이동 가능
+
+
+
+### Float
+
+* 이미지 좌, 우측 주변으로 텍스트를 둘러싸는 레이아웃을 위해 도입
+* 이미지가 아닌 다른 요소들에도 적용해 웹 사이트의 전체 레이아웃을 만드는데까지 발전
+* 속성
+  * `none`: 기본값
+  * `left`: 요소를 왼쪽으로 띄움
+  * `right` : 요소를 오른쪽으로 띄움
+* 위로 띄워서 아래에 있는 이미지가 위로 올라와서 겹쳐보임
+
+
+
+### Flexbox
+
+* 요소 간 공간 배분과 정렬 기능을 위한 1차원(단방향) 레이아웃
+* **요소**
+  * Flex Container(부모 요소)
+  * Flex Item(자식 요소)
+* **축**
+  * main axis(메인축)
+  * cross axis(교차축)
+* `display`: `flex`
+* 배치 방향 설정
+  * **flex-direction**
+    * row(row reverse)
+    * column(column reverse)
+    * default : row
+* 메인축 방향 정렬
+  * **justify-content**
+* 교차축 방향 정렬
+  * **align-items**, align-self, align-content
+* 기타
+  * **flex-wrap**, flex-flow, flex-grow, order, flex-shrink, flex-basis
+* **justify-content**
+  * flex-start, flex-end, center, space-between, space-around, space-evenly
+* **align-items**
+  * flex-start, flex-end, center, stretch, baseline
+* **align-content**
+  * flex-start, flex-end, center, stretch, space-between, space-around
+* **align-self**
+  * auto, flex-start, flex-end, center, stretch, baseline
