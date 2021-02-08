@@ -219,3 +219,31 @@ num = int(input())
 print(Baby_gin2(num))
 ```
 
+
+
+
+
+## 실습
+
+* 상자들이 쌓여있는 방이 있다.
+* 방이 오른쪽으로 90도 회전하여 상자들이 낙하한다고 할 때, 낙차가 큰 상자를 구하라.
+
+* 중력은 회전한 후에 적용
+
+```python
+def gravity(N, lst):
+    max_height = 0
+    for i in range(N-1):
+        count = 0
+        # 밑에 있는 상자들 중에서 자신보다 높은 상자 count
+        for j in range(i+1, N):
+            if lst[i] <= lst[j]:
+                count += 1
+        # 오른쪽으로 회전하였을 때 현재 높이 - 자신보다 높거나 같은 상자 count
+        if max_height < N - (i+1) - count:
+            max_height = N - (i+1) - count
+    return max_height
+N = int(input())
+height = list(map(int, input().split()))
+print(gravity(N, height))
+```
