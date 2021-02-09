@@ -223,7 +223,7 @@ print(Baby_gin2(num))
 
 
 
-## 실습
+## 실습 1
 
 * 상자들이 쌓여있는 방이 있다.
 * 방이 오른쪽으로 90도 회전하여 상자들이 낙하한다고 할 때, 낙차가 큰 상자를 구하라.
@@ -247,3 +247,36 @@ N = int(input())
 height = list(map(int, input().split()))
 print(gravity(N, height))
 ```
+
+문제 출처 :  https://swexpertacademy.com/main/main.do
+
+## 실습 2
+
+* 왼쪽과 오른쪽으로 창문을 열었을 때, 양쪽 모두 거리 2 이상의 공간이 확보될 때 조망권이 확보된다고 말한다.
+
+* 빌딩들에 대한 정보가 주어질 때, 조망권이 확보된 세대의 수를 반환하는 프로그램을 작성하시오.
+
+```python
+def view(N, building):
+    answer = 0
+    for j in range(2, N-2):
+        # 전방과 후방 view 확인, 모두 현재 빌딩보다 낮아야 한다.
+        if building[j] > building[j+1] and building[j] > building[j+2] and building[j] > building[j-1] and building[j] > building[j-2]:
+            max_height = 0
+            # 전방, 후방에서 가장 높은 빌딩 높이
+            for i in range(j-2, j+3):
+                if i != j:
+                    if max_height < building[i]:
+                        max_height = building[i]
+            # 확보된 조망권
+            answer += building[j] - max_height
+    return answer
+
+for i in range(1, 11):
+    N = int(input())
+    building = list(map(int, input().split()))
+    print(f'#{i}',view(N, building))
+```
+
+문제 출처 : https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV134DPqAA8CFAYh
+
