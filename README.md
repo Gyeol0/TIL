@@ -14,12 +14,12 @@
 
 # Python
 
-## crawling & chat_bot
+## Crawling & Chat_bot
 
 * crawling
 * chat_bot
 
-## python basic
+## Python Basic
 
 * syntax
 * 자료 구조
@@ -27,13 +27,55 @@
   * 조건문
   * 반복문
 
-## python function
+## Python Function
 
 * Input
 * Output
 * parameter
 * argument
 * 재귀 함수
+
+## Data Structure
+
+* String
+* List
+* set
+* Dictionary
+
+## OOP
+
+* Object
+* Object Oriented Programming
+* Instance & Class
+* Method
+* 상속
+* 메소드 오버라이딩
+
+
+
+# Web
+
+## HTML
+
+* 기본 구조
+* 태그
+
+## CSS
+
+* 정의 방법
+* Selector
+* 상속
+* 단위
+* Box model
+* Layout
+
+## Bootstrap
+
+* CDN
+* Spacing
+* Grid system
+
+
 
 
 
