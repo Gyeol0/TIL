@@ -99,5 +99,5 @@
 * 6485 Bus_Route
   * https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWczm7QaACgDFAWn&categoryId=AWczm7QaACgDFAWn&categoryType=CODE&problemTitle=6485&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=&pageSize=10&pageIndex=1
 
-[asdsad](Algorithm/List_practice/ㅁㅇㅁㄴㅇㅁㄴㅇ.md)
+[asdsad](Algorithm\\List_practice\\ㅁㅇㅁㄴㅇㅁㄴㅇ.md)
 
