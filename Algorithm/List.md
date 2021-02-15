@@ -1,4 +1,4 @@
-# # Algoritm
+# Algoritm
 
 > **무엇이 좋은 알고리즘인가?**
 
@@ -21,6 +21,10 @@
   * 시간 복잡도 함수 중에서 가장 큰 영향력을 주는 n에 대한 항만을 표시
   * 계수는 생략
   * O(4n + 3) = O(4n) = O(n)
+  
+  
+
+# List
 
 
 
@@ -279,4 +283,108 @@ for i in range(1, 11):
 ```
 
 문제 출처 : https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV134DPqAA8CFAYh
+
+
+
+## 탐색
+
+### 지그재그 순회
+
+```python
+for i in range(N):
+    for j in range(M):
+        arr[i][j + (M-1-2*j) * (i % 2)]
+       	# 연산 수행ㄴ
+```
+
+### 상하좌우 탐색
+
+```python
+dx = [1, -1, 0, 0]
+dy = [0, ,0 1, -1]
+for i in range(4):
+    ax = x + dx
+    ay = y + dy
+```
+
+```python
+dxy = [[-1, 0], [1, 0], [0, -1], [0, 1]]
+for i in range(4):
+    ax = x + dxy[i][0]
+    ay = y + dxy[i][1]
+```
+
+
+
+#### 연습 문제
+
+> 인접한 요소와의 차이의 절댓값의 총합을 구하시오.
+
+```python
+# 인접한 요소와의 차의 절댓값의 총합
+def Sum_Abs(N, M ,arr):
+    abs_sum = 0
+    dx = [1, -1, 0, 0]
+    dy = [0, 0, 1, -1]
+    for i in range(N):
+        for j in range(M):
+            for k i n range(4):
+                ax = arr[i][j] + dx[k]
+                ay = arr[i][j] + dy[k]
+                if ax >= 0 and ax < N and ay >=0 and ay <M:
+                    abs_sum += abs(arr[i][j] - arr[ax][ay])
+    return abs_sum
+```
+
+
+
+### 비트 연산자
+
+* **&** : 비트 단위로 AND 연산
+* **|** :  비트 단위로 OR 연산
+* **<<** : 피연산자의 비트 열을 왼쪽으로 이동
+  * 1<<n : 2의 n제곱, 원소가 n개일 경우으 모든 부분 집합의 수를 의미
+  * i & (1<<j) : i의 j번째 비트가 1인지 아닌지를 리턴
+* **>>** : 피연산자의 비트 열을 오른쪽으로 이동
+
+
+
+> 부분 집합을 생성
+
+```python
+arr = [1,2,3,4]
+n = len(arr)
+for i in range(1<<n):
+    for j in rnage(n):
+        if i & (1<<j):
+            print(arr[j], end=", ")
+    print()
+print()
+```
+
+
+
+#### 연습 문제
+
+> 정수 집합을 입력 받아서 합이 0인 부분 집합 반환
+
+```python
+def Sum_Subset():
+    arr = list(map(int, input().split()))
+    N = len(arr)
+    result = []
+    for i in range(1<<N):
+        subset = []
+        sum_sub = 0
+        for j in range(N):
+            if i & (1<<j):
+                subset.append(arr[j])
+        for j in subset:
+            sum_sub += j
+        if sum_sub == 0:
+            result.append(subset)
+    return result
+```
+
+
 
