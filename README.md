@@ -105,6 +105,11 @@
 ### String
 
 * [String 문제 출처](Algorithm/String_practice/Algorithm_Source.md)
-
-
-
+* 처리
+  * 뒤집기
+  * 비교
+  * 문자열 <-> 숫자 변환
+* 패턴 매칭
+  * 브루트 포스
+  * KMP
+  * 보이어 - 무어
