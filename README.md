@@ -88,6 +88,19 @@
 ### List
 
 * [List 문제 출처](Algorithm/List_practice/Algorithm_Source.md)
+* 정렬
+  * 버블 정렬(Bubble Sort)
+  * 카운팅 정렬(Counting Sort)
+  * 선택 정렬(Selection Sort)
+* 탐욕 알고리즘(Greedy)
+* 순회, 탐색
+  * 완전 탐색(Exhaustive Search)
+  * 지그재구 순회
+  * 상하좌우 탐색
+* 검색
+  * 순차 검색(Sequential Search)
+  * 이진 검색(Binary Search)
+  * 인덱싱(Indexing)
 
 ### String
 
