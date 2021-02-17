@@ -423,7 +423,7 @@ def Sum_Subset():
   * 이진 검색(binary search)
   * 인덱싱(indexing)
 
-### 순자 검색(Sequential Search)
+### 순차 검색(Sequential Search)
 
 * 일렬로 되어 있는 자료를 순서대로 검색하는 방법
 * 가장 간단하고 직관적인 검색 방법
