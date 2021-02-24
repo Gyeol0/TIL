@@ -206,5 +206,236 @@ def fibo2(n):
      2. 방문하지 않은 정점이 없으면, 탐색의 방향을 바꾸기 위해 스택을 pop하여 가장 마지막 방문 정점을 v로 하여 다시 반복
   3. 스택이 공백이 될 때까지 2 반복
 
+```python
+def dfs(graph, start, end):
+    visit = []
+    stack = [start]
+    while stack:
+        s = stack.pop()
+        # 경로중 end를 만나면 종료
+        if s == end:
+            return 1
+        # 방문하지 않았고 갈 수 있으면 stack에 추가
+        if s not in visit and s in graph:
+            visit.append(s)
+            stack += graph[s]
+    return 0
+
+T = int(input())
+for test in range(1, T+1):
+    V, E = map(int, input().split())
+    graph = {}
+    for i in range(E):
+        a, b = map(int, input().split())
+        if a not in graph:
+            graph[a] = [b]
+        else:
+            graph[a].append(b)
+    start, end = map(int, input().split())
+    print(f'#{test}',Graph_Route(graph, start, end))
+```
+
+* 딕셔너리 graph말고 2차원 인접 리스트로도 표현 가능
 
 
+
+### 계산기
+
+* 문자열로 된 계산식이 주어질 때
+
+  1. 중위 표기법의 수식을 후위 표기법으로 변경(스택), A+B
+     1. 피연산자이면 출력
+     2. 연산지이면, 스택 top 연산자보다 우선순위가 높으면 스택에 push, 아니면 조건을 만족할 때까지 pop한 후 push, top이 연산자가 아니면 push
+     3. ')'이면 스택 top에 왼쪽 괄호가 나올 때까지 pop, '('가 나오면 버림
+     4. 중위 표기식 반복
+     5. 스택에 남아 있으면 모두 pop
+        * 스택 밖의 왼쪽 괄호는 우선 순위가 가장 높음
+        * 스택 안의 왼쪽 괄호는 우선 순위가 가장 낮음
+
+  ```python
+  def Postfix_Notation(expression): # 후위 표기법
+      stack = []
+      result = []
+      priority_in = {
+          '(': 0,
+          '+': 1,
+          '-': 1,
+          '*': 2,
+          '/': 2,
+          ')': '-'
+      }
+      priority_out = {
+          '(': 3,
+          '+': 1,
+          '-': 1,
+          '*': 2,
+          '/': 2,
+          ')': '-'
+      }
+  
+      for i in expression:
+          # 피연산자는 push
+          if i not in priority_in:
+              result.append(int(i))
+          else:   # 연산자
+  
+              # 스택이 있을 때
+              if stack:
+                  # 닫는 괄호면 여는 괄호가 나올 때까지 pop
+                  if i == ')':
+                      while stack[-1] != '(':
+                          result.append(stack.pop())
+                      stack.pop()
+                  else:
+                      # top보다 우선순위가 클 때까지 pop
+                      while stack:
+                          if priority_in[stack[-1]] < priority_out[i]:
+                              stack.append(i)
+                              break
+                          else:
+                              result.append(stack.pop())
+                      # 스택 비어지면 push
+                      if not stack:
+                          stack.append(i)
+              else:   # 스택이 비었을 때
+                  stack.append(i)
+      # 스택에 남아있을 때 모두 pop
+      while stack:
+          result.append(stack.pop())
+      return result
+  ```
+
+  
+
+  2. 후위 표기법의 수식을 스택을 이용하여 계산, AB+
+     1. 피연산자면 스택에 push
+     2. 연산자를 만나면 필요한 만큼의 피연산자를 스택에서 pop하여 연산, 연산 결과를 스택에 push
+     3. 수식이 끝나면 마지막으로 스택을 pop하여 출력
+
+  ```python
+  def calculator(expression):
+      stack = []
+      symbol = ['+', '-', '*', '/']
+      for i in expression:
+          # 피연산자는 스택에 push
+          if i not in symbol:
+              stack.append(i)
+          else:
+              # 연산자는 뒤에서부터 2개 계산해서 push
+              a = stack.pop()
+              b = stack.pop()
+              if i == '+':
+                  stack.append(b + a)
+              elif i == '-':
+                  stack.append(b - a)
+              elif i == '*':
+                  stack.append(b * a)
+              elif i == '/':
+                  stack.append(b / a)
+      result = stack.pop()
+      return result
+  ```
+
+
+
+### 백트래킹
+
+* 백트래킹(Backtracking) 기법은 해를 찾는 도중에 **막히면**(즉, 해가 아니면) 되돌아가서 다시 해를 찾아가는 기법
+
+* 최적화(optimization) 문제와 결정(decision) 문제를 해결할 수 있다.
+* 결정 문제 : 문제의 조건을 만족하는 해가 존재하는지의 여부를 'yes' 또는 'no'로 답하는 문제
+  * 미로 찾기
+  * n-Queen 문제
+  * Map coloring
+  * 부분 집합의 합(Subset Sum) 문제 등
+* DFS와의 차이
+  * 어떤 노드에서 출발하는 경로가 해결책으로 이어질 것 같지 않으면 더 이상 그 경로를 따라가지 않음으로써 시도의 횟수를 줄임(Prunning 가지치기)
+  * 깊이우선탐색이 모든 경로를 추적하는데 비해 백트래킹은 불필요한 경로를 조기에 차단
+  * 깊이 우선탐색을 하기에는 경우의 수가 너무나 많음. N! 가지의 경우의 수를 가진 문제에 대해 깊으우선탐색을 가하면 당연히 처리 불가능
+  * 백트래킹 알고리즘을 적용하면 일반적으로 경우의 수가 줄어들지만 이 역시 최악의 경우에는 여전히 지수함수 시간(Exponentital Time)을 요하므로 처리 불가능
+* 어떤 노드의 유망성을 점검한 후에 유망(promsing)하지 않다고 결정되면 그 노드의 부모의 다음 자식 노드로
+* 어떠한 노드를 방문하였을 때, 그 노드를 포함한 경로가 답이 될 수 없으면 그 노드는 유망하지 않음.
+* 가지치기(pruning) : 유망하지 않는 노드가 포함되는 경로는 더 이상 고려하지 않는다.
+* 절차
+  1. 상태 공간 트리의 DFS 실시
+  2. 각 노드가 유망한지 점검
+  3. 유망하지 않으면 부모 노드로 돌아가서 반복
+
+
+
+
+
+### 분할 정복
+
+* 분할(Divide) : 해결할 문제를 여러 개의 작은 부분으로 나눈다.
+* 정복(Conquer) : 나눈 작은 문제를 각각 해결한다.
+* 통합(Combine) : (필요하다면) 해결된 해답을 모은다.
+
+#### 거듭제곱
+
+```python
+def Power(Base, Exponent): # O(log N)
+    if Exponent == 0 or Base == 0:
+        return 1
+    if Exponent % 2 == 0:
+        # ex) 2의 10승은 2의 5승의 제곱
+        NewBase = Power(Base, Exponent//2)
+        return NewBase * NewBase
+    else:
+        NewBase = Power(Base, (Exponent-1) //2)
+        return (NewBase * NewBase) * Base
+print(Power(2, 10))  # 1024
+```
+
+
+
+#### 퀵정렬
+
+* 주어진 배열을 두 개로 분할하고, 각각을 정렬
+* 합병정렬은 그냥 두 부분으로 나누는 반면, 퀵정렬은 분할할 때, 기준 아이템(pivot item) 중심으로 이것보다 작은 것은 왼쪽, 큰 것은 오른쪽에 위치
+* 각 부분 정렬이 끝난 후, 합병정렬은 "합병(merge)"이란 후처리 작업 필요, 퀵정렬은 없음.
+
+```python
+def partition(arr, start, end):
+    pivot = (start + end) // 2
+    L = start
+    R = end
+    while L < R:
+        while arr[L] < arr[pivot] and L < R:
+            L += 1
+        while arr[R] >= arr[pivot] and L < R:
+            R -= 1
+        if L < R:
+            if L == pivot:
+                pivot = R
+            Arr[L], arr[R] = arr[R], arr[L]
+    arr[pivot], arr[R] = arr[R], arr[pivot]
+    return R
+```
+
+* [69, 10, 30, 2, 16, 8, 31, 22], L = 69, R = 22, pivot = 2
+* L이 오른쪽으로 이동하면서 피봇보다 크거나 같은 원소를 찾고, R은 왼쪽으로 이동하면서 피봇보다 작은 원소를 찾는다.
+* R이 pivot보다 작은 원소를 찾지 못했으므로 69에서 L과 만난다.
+* L과 R이 만났으므로, 69를 pivot을 교환하고 2의 위치 확정, 2, [10, 30, 69, 16, 8, 31, 22]
+* pivot 2의 왼쪽 부분 집합은 공집합, 퀵정렬 수행x
+  * 오른쪽 부분 집합에 대해서 퀵정렬 수행
+  * 오른쪽 부분집합 원소 7개, pivot = 16, L = 10, R = 22
+  * L = 30, R = 8 서로 교환 2, [10, 8, 69, 16, 30, 31, 22]
+  * 69에서 L과 R이 같아짐 2, [10, 8], 16, [69, 30, 31, 22]
+* [10, 8]에서 L = 10, pivot = 10, R = 8
+  * L과 R을 교환하는데, L이 pivot이므로 교환한 자리를 pivot 위치로 확정
+  * 2, [8], 10, 16, [69, 30, 31, 22]
+  * 왼쪽 부분집합은 원소가 한 개이므로 퀵정렬 수행x
+* [69, 30, 31, 22], L = 69, R = 22, pivot = 30
+  * 69, 22 교환
+  * [22, 30, 31, 69]
+  * pivot에서 L과 R이 만남
+  * [22], 30, [31, 69], pivot 위치 확정
+  * 왼쪽 원소 1개 확정
+* [31, 69], L = 31, R = 69, pivot = 31
+  * 31에서 L과 R이 만남
+  * pivot 위치 확정
+  * 31, [69], 오른쪽 원소 1개 확정
+* 결과 : 2, 8, 19, 16, 22, 30, 31, 69
+* 최악의 경우 O(n2)
+* 평균 nlogn
