@@ -419,7 +419,7 @@ powerset(0)
 
 #### 순열
 
-* powerset과 매우 유사
+* powerset과 매우 유사함
 
 ```python
 def backtrack(a, k, input):
@@ -433,7 +433,7 @@ def backtrack(a, k, input):
     else:
         k += 1
         ncandidates = construct_candidates(a,k,input, c)
-        # 사용하지 않은 개수만큼 반복해서 backtracking
+        # 사용하지 않은 개수만큼 반복해서 backtrack
         for i in range(ncandidates):
             a[k] = c[i]
             backtrack(a,k,input)
@@ -446,7 +446,7 @@ def construct_candidates(a, k, input,c):
 
     ncandidates = 0
     # 0번 인덱스는 사용 x
-    # 사용하지 않은 값 계산
+    # 사용하지 않은 값 개수 계산
     for i in range(1, input+1):
         if in_perm[i] == False:
             c[ncandidates] = i
