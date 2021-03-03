@@ -361,7 +361,121 @@ for test in range(1, T+1):
   2. 각 노드가 유망한지 점검
   3. 유망하지 않으면 부모 노드로 돌아가서 반복
 
+#### powerset
 
+* 어떤 집합의 공집합과 자기자신을 포하만 모든 부분집합을 powerset이라 한다.
+* 2의 n승
+
+```python
+def construct_candidates(a, k, input, c):
+    c[0] = True
+    c[1] = False
+    return 2
+
+def backtrack(a, k, input):
+    global MAXCANDIDATES
+    c = [0] * MAXCANDIDATES # Yes or No
+    
+    if k == input: # 원하는 개수 만큼 뽑았는지
+        process_solution(a, k) # 답이며 원하는 작업을 한다. 출력을 하던지 더하던지
+    else:
+        k += 1
+        ncandidates = construct_candidates(a, k, input, c) # 후보군 만들기(2)
+        for i in range(ncandidates):
+            a[k] = c[i] # ncandidates = 2, i가 0일 떄는 c[i] = True, 1일때는 c[i] = False
+            # a[k]에 True로 한 번, False로 한 번해서 backtrack(a, k, input) 실행
+            backtrack(a, k, input)
+            
+MAXCANDIDATES = 100
+NMAX = 100
+a = [0] * NMAX #check, 이 원소를 사용했는지, 임의로 100개
+backtrack(a, 0, 3) # 0은 a라는 원소의 index, 3은 몇 개 뽑을지
+```
+
+```python
+N = 3
+arr = [1, 2, 3]
+sel = [0] * N
+
+def powerset(idx):
+    if idx == N:
+        print(*sel) # 비트로 출력됨 [1, 0, 0], [0, 1, 0], .....위치를 찍은 것
+        return
+    
+    # idx 자리의 원소를 뽑고 간다.
+    sel[idx] = 0
+    powerset(idx + 1)
+    
+    # idx 자리의 원소를 안뽑고 간다.
+    sel[idx] = 1
+    powerset(idx + 1)
+    
+    # ncandidates, a[k] = c[i] 와 같음
+    
+powerset(0)
+```
+
+
+
+#### 순열
+
+* powerset과 매우 유사
+
+```python
+def backtrack(a, k, input):
+    global MAXCANDIDATES
+    c = [0] * MAXCANDIDATES
+
+    if k == input:
+        for i in range(1, k+1): # k개 출력
+            print(a[i], end = ' ')
+        print()
+    else:
+        k += 1
+        ncandidates = construct_candidates(a,k,input, c)
+        # 사용하지 않은 개수만큼 반복해서 backtracking
+        for i in range(ncandidates):
+            a[k] = c[i]
+            backtrack(a,k,input)
+
+def construct_candidates(a, k, input,c):
+    in_perm = [False] * NMAX
+    # 사용한 값 표시
+    for i in range(1, k):
+        in_perm[a[i]] = True
+
+    ncandidates = 0
+    # 0번 인덱스는 사용 x
+    # 사용하지 않은 값 계산
+    for i in range(1, input+1):
+        if in_perm[i] == False:
+            c[ncandidates] = i
+            ncandidates += 1
+    return ncandidates
+
+MAXCANDIDATES = 3
+NMAX = 3
+```
+
+```python
+arr = [1,2,3]
+N = 3
+sel =[0] * N
+check = [0] * N
+
+def perm(idx):
+    # 다 뽑아서 정리했다면
+    if idx == N:
+        print(sel)
+    else:
+        for i in range(N):
+            if check[i] == 0:
+                sel[idx] = arr[i]  # 값을 써라, 값을 덮어쓰기 때문에 원상복구 안해도 됨
+                check[i] = 1  # 사용했다는 표시
+                perm(idx+1)
+                check[i] = 0  # 다음 반복문을 위한 원상복구
+perm(0)
+```
 
 
 
