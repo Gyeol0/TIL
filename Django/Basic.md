@@ -198,3 +198,12 @@ def dinner(request):
   {% endcomment %}
 ```
 
+
+
+## 상속
+
+### Template inheritance
+
+* 템플릿 상속은 기본적으로 코드의 재사용성에 초점을 맞춤
+* 템플릿 상속을 사용하면 사이트의 모든 공통 요소를 포함
+* 하위 템플릿이 재정의(override) 할 수 있는 블록을 정의하는 기본 "skeleton" 템플릿을 만들 수 있음
