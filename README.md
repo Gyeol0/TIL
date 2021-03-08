@@ -113,3 +113,61 @@
   * 브루트 포스
   * KMP
   * 보이어 - 무어
+
+### Stack
+
+* [Stack 문제 출처](Algorithm/Stack_practice/Algorithm_Source.md)
+
+* 특성
+* 구현
+* 재귀 호출
+* Memoization
+* DP(Dynamic Programming)
+* DFS(깊이 우선 탐색)
+* 백트래킹
+  * powerset
+  * 순열
+* 분할 정복
+  * 거듭제곱
+  * 퀵정렬
+
+### Queue
+
+* [Queue 문제 출처](Algorithm/Queue_practice/Algorithm_Source.md)
+
+* 특성
+* 연산
+* 선형 큐
+* 원형 큐
+* 연결 큐
+* 우선순위 큐(Priority Queue)
+* 버퍼(Buffer)
+* BFS(너비 우선 탐색)
+
+
+
+## Django
+
+### Basic
+
+* 명령어
+* settings.py
+* urls.py
+* views.py
+* templates
+  * DTL
+  * Syntax
+  * 태그
+  * filters
+  * 상속
+* HTML Form
+  * Form
+  * Input
+  * HTTP
+    * GET
+* URL
+  * urls.py
+  * Naming URL patterns
+* Addiition
+  * App 생성 순서
+  * 상속 방법
