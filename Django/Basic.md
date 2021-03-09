@@ -310,7 +310,25 @@ urlpatterns = [
 ```
 
 * app에 있는 view 함수들로 이동시켜 준다.
+
 * 이제부터는 무조건 이름을 설정시켜준다.
+
+* **Variable Routing**
+
+  * `path('hello/<str:name>/', views.hello, name='hello')`
+  * hello경로를 가며 name을 입력 받아 사용
+
+  ```python
+  def hello(request, name):
+      context = {
+          'name': name,
+      }
+      return render(request, 'hello.html', context)
+  ```
+
+  * name을 인자로 받는다.
+
+  
 
 ### Naming URL patterns
 
@@ -412,5 +430,3 @@ def catch(request):
 * 다양한 방식으로 짤 수 있다.
 
 * 개발자가 손이 많이 간다.
-
-  
