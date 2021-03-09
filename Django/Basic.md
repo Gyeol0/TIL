@@ -37,6 +37,10 @@
 * `LANGUAGE_CODE = 'ko-kr'`
   * 한국어로 번역
   * 'en-us'가 기본
+  * 사용하려면 `USE_I18N = True`되어 있어야함
+  * USE_I18N는 국제화
+  * USE_L10N는 현지화
+    * 한국은 왼쪽부터 쓴다?
 * TIME_ZONE = 'Asia/Seoul'
   * 시간
   * UTC가 기본
