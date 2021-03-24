@@ -12,7 +12,9 @@
 
 
 
-# Python
+# Python 
+
+* 2021.01.18 ~ 2021.01.29
 
 ## Crawling & Chat_bot
 
@@ -55,6 +57,8 @@
 
 # Web
 
+* 2021.02.01 ~ 2021.02.07
+
 ## HTML
 
 * 기본 구조
@@ -80,6 +84,9 @@
 
 
 # Algorithm
+
+* 2021.02.08 ~ 2021.03.07
+* 알고리즘 풀이는 Alogrithm repository에서 진행중~
 
 ### 문제 출처
 
@@ -134,7 +141,6 @@
 ### Queue
 
 * [Queue 문제 출처](Algorithm/Queue_practice/Algorithm_Source.md)
-
 * 특성
 * 연산
 * 선형 큐
@@ -146,7 +152,10 @@
 
 
 
-## Django
+# Django
+
+* 2021.03.08 ~
+* CRUD가 기본~
 
 ### Basic
 
