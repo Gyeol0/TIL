@@ -150,7 +150,11 @@
 * 버퍼(Buffer)
 * BFS(너비 우선 탐색)
 
+### Sys Basic
 
+* [Sys Basic 문제 출처](Algorithm/Sys Basic_practice/Algorithm_Source.md)
+* 비트 연산
+* 진수
 
 # Django
 
