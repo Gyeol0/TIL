@@ -153,7 +153,7 @@
 ### Sys Basic
 
 * [Sys Basic 문제 출처](Algorithm/Sys Basic_practice/Algorithm_Source.md)
-* [Queue 문제 출처](Algorithm/Queue_practice/Algorithm_Source.md)
+* [Queue 문제 출처](Algorithm/Sys Basic_practice/Algorithm_Source.md)
 * 비트 연산
 * 진수
 
