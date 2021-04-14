@@ -557,3 +557,16 @@ def Select(arr, k):
         arr[i], arr[minIndex] = arr[minIndex], arr[i]
     return arr[k-1]
 ```
+
+
+
+### 탐욕 기법과 DP 비교
+
+* 탐욕 : 매 단계에서, 가장 좋게 보이는 것을 빠르게 선택한다, 지역 최적 선택(local optimal choice)
+* DP :  매 단계의 선택은 해결한 하위문제의 해를 기반으로 한다.
+* 탐욕 : 하위 문제를 풀기 전에 (탐욕적)선택이 먼저 이루어진다.
+* DP : 하위 문제가 우선 해결된다
+* 탐욕 : Top -down 방식
+* DP : Bottom -up 방식, Top-down할 때도 있음
+* 탐욕 : 일반적으로 빠르고 간결하다
+* DP : 좀 더 느리고, 복잡하다
