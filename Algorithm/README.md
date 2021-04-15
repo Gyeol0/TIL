@@ -70,3 +70,9 @@
 * [Sys Basic 문제 출처](Algorithm/Sys Basic_practice/Algorithm_Source.md)
 * 비트 연산
 * 진수
+
+### BruteForce&Greedy
+
+* [BruteForce&Greedy 문제 출처](Algorithm/BruteForce&Greedy_practice/Algorithm_Source.md)
+
+  
