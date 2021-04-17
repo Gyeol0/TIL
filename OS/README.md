@@ -4,5 +4,10 @@
 
 출처 - Siberschatz et. al. <Operating System Concepts 10th Edition>. Wiley. 2018.
 
+## 1. Basic
 
-
+* Concept
+* Operating System
+* Symmetric multiprocessing(SMP)
+* virtualization(가상화)
+* System calls
