@@ -11,3 +11,4 @@
 * Symmetric multiprocessing(SMP)
 * virtualization(가상화)
 * System calls
+
