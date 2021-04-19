@@ -522,9 +522,19 @@ def partition(arr, start, end):
         if L < R:
             if L == pivot:
                 pivot = R
-            Arr[L], arr[R] = arr[R], arr[L]
+            arr[L], arr[R] = arr[R], arr[L]
     arr[pivot], arr[R] = arr[R], arr[pivot]
-    return R
+    return R # 새로운 pivot 위치 반환
+
+def quick_sort(arr, start, end):
+    if start < end:
+        pivot = partition(arr, start, end)
+        quick_sort(arr, start, pivot-1)
+        quick_sort(arr, pivot+1, end)
+    return arr
+
+arr = [69, 10, 30, 2, 16, 8, 31, 22]
+print(quick_sort(arr, 0, len(arr)-1))
 ```
 
 * [69, 10, 30, 2, 16, 8, 31, 22], L = 69, R = 22, pivot = 2
