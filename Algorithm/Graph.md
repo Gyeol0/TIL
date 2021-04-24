@@ -255,6 +255,37 @@ def Link(x, y):
   * 비트리 정점들 : 선택되지 않은 정점들
 
 ```python
+def prim(graph, start):
+    INF = 9999999999999
+    key = [INF] * N  # 간선의 가중치는 무한대로 가정되어 있음
+    visited = [False] * N  # 방문여부 초기화
+    key[start] = 0  # 시작점 가중치 0으로 초기화
+ 
+    cnt = 0
+    result = 0
+ 
+    while cnt < N:
+        minimum = INF
+        now = 0
+        for i in range(N):  # 방문 안한 정점중 최소 가중치 정점 찾기
+            if not visited[i] and key[i] < minimum:
+                minimum = key[i]
+                now = i
+ 
+        visited[now] = True  # 최소 가중치 정점 방문처리
+        result += minimum  # 결과값 저장
+        cnt += 1  # 탐색 갯수 증가
+ 
+        for w in range(N):  # 선택 정점의 인접한 정점 확인
+            if not visited[w] and key[w] > graph[now][w]:
+                key[w] = graph[now][w]  # 가중치 갱신
+ 
+    return result
+```
+
+
+
+```python
 from heapdict import heapdict
 
 def prim(graph, first):
