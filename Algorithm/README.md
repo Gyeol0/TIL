@@ -74,5 +74,16 @@
 ### BruteForce&Greedy
 
 * [BruteForce&Greedy 문제 출처](Algorithm/BruteForce&Greedy_practice/Algorithm_Source.md)
+* 거스름돈
 
-  
+### Graph
+
+* [Graph 문제 출처](Algorithm/Graph_practice/Algorithm_Source.md)
+* 탐색
+* 서로소 집합
+* 최소 신장 트리(Minimum Spanning Tree)
+  * Prim
+  * Kruskal
+* 최단 경로
+  * 다익스트라
+
