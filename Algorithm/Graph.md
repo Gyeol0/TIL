@@ -349,7 +349,6 @@ def union(v, u):
            
 def kruskal(graph):
     mst = []
-    
     # 초기화
     for node in vertices:
         make_set(node)
