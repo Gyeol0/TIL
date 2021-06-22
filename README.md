@@ -188,3 +188,10 @@
 # Javascript
 
 # Vue
+
+# Java
+
+# SQL
+
+# Web Application
+
